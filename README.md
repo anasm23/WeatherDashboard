@@ -30,36 +30,10 @@ function weatherFunction(searchTerm) {
             }
             $("#today").empty();
 ```
-* 
-
-```
-            var title = $("<h3>").addClass("card-title").text(data.name + " (" + new Date().toLocaleDateString() + ")");
-            var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
 
 
-            var card = $("<div>").addClass("card");
-            var cardBody = $("<div>").addClass("card-body");
-            var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + " MPH");
-            var humid = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
-            var temp = $("<p>").addClass("card-text").text("Temperature: " + data.main.temp + " °F");
-
-            var lon = data.coord.lon;
-            var lat = data.coord.lat;
-
-            $.ajax({
-                type: "GET",
-                url: "https://api.openweathermap.org/data/2.5/uvi?appid=ba465d36d563ab2554496783400dba83&lat=" + lat + "&lon=" + lon,
-            }).then(function (response) {
-                console.log(response + "Success");
-                
-                
-            /////
-            title.append(img);
-            cardBody.append(title, temp, humid, wind);
-            card.append(cardBody);
-            $("#today").append(card);
-            console.log(data);
-        });
-    }
-```
+## Technologies used
+* Javascript
+* Openweather API
+* HTML/CSS
 
