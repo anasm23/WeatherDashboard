@@ -1,10 +1,12 @@
 # 06 Server-Side APIs: Weather Dashboard
 
 ## Deployed App
-https://safe-savannah-47043.herokuapp.com/
+https://anasm23.github.io/WeatherDashboard/
 
 ## Description
-Using the OpenWeather API, data is retrieved and displayed showing a 5-day Forecast and current day weather statistics. Results can be found through search of any city. 
+This application displays the weather conditions for the user searched city, showing both the 5 day forecast and current forecast. Additionally, Humidity, Wind Speed and UV Index are displayed. Each search is stored locally. Past searches can be accessed easily from the list displayed under the search bar. 
+
+Using the OpenWeather API, data is retrieved and displayed showing a 5-day Forecast and current day weather statistics. 
 
 Using AJAX, the OpenWeather api retrieves data in JSON format. The application dynamically updates with JQuery.
 
@@ -27,7 +29,10 @@ function weatherFunction(searchTerm) {
                 createRow(searchTerm);
             }
             $("#today").empty();
+```
+* 
 
+```
             var title = $("<h3>").addClass("card-title").text(data.name + " (" + new Date().toLocaleDateString() + ")");
             var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
 
@@ -46,23 +51,8 @@ function weatherFunction(searchTerm) {
                 url: "https://api.openweathermap.org/data/2.5/uvi?appid=ba465d36d563ab2554496783400dba83&lat=" + lat + "&lon=" + lon,
             }).then(function (response) {
                 console.log(response + "Success");
-                ////
-                var uvResponse = response.value;
-                var uvIndex = $("<p>").addClass("card-text").text("UV Index: ");
-                var btn = $("<span>").addClass("btn btn-sm").text(uvResponse);
-                ////
-                if (uvResponse < 3) {
-                    btn.addClass("btn-success");
-                } else if (uvResponse < 7) {
-                    btn.addClass("btn-warning");
-                } else {
-                    btn.addClass("btn-danger");
-                }
-                ////
-                cardBody.append(uvIndex);
-                $("#today .card-body").append(uvIndex.append(btn));
-
-            });
+                
+                
             /////
             title.append(img);
             cardBody.append(title, temp, humid, wind);
@@ -71,14 +61,5 @@ function weatherFunction(searchTerm) {
             console.log(data);
         });
     }
-    
-```
-
-## User Story
-
-```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
 ```
 
